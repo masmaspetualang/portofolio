@@ -1,0 +1,80 @@
+/* About.module.css */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+/* Block */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.blockTitle {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* About card */
+.aboutCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+}
+
+.aboutText {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+
+.expList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.expItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.expDash {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Skill grid */
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Cert list */
+.certList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
