@@ -1,8 +1,15 @@
 import styles from './ProjectCard.module.css'
 
-export default function ProjectCard({ title, description, tags, imgSrc }) {
+export default function ProjectCard({ title, description, tags, imgSrc, projectUrl }) {
+  const CardTag = projectUrl ? 'a' : 'article'
+
   return (
-    <article className={styles.card}>
+    <CardTag
+      href={projectUrl}
+      target={projectUrl ? '_blank' : undefined}
+      rel={projectUrl ? 'noopener noreferrer' : undefined}
+      className={`${styles.card} ${projectUrl ? styles.clickable : ''}`}
+    >
       <div className={styles.thumb}>
         {imgSrc
           ? <img src={imgSrc} alt={title} className={styles.img} />
@@ -12,7 +19,10 @@ export default function ProjectCard({ title, description, tags, imgSrc }) {
         }
       </div>
       <div className={styles.body}>
-        <h3 className={styles.title}>{title}</h3>
+        <div className={styles.titleRow}>
+          <h3 className={styles.title}>{title}</h3>
+          {projectUrl && <span className={styles.arrow}>↗</span>}
+        </div>
         <p className={styles.desc}>{description}</p>
         <div className={styles.tags}>
           {tags.map((tag) => (
@@ -20,6 +30,7 @@ export default function ProjectCard({ title, description, tags, imgSrc }) {
           ))}
         </div>
       </div>
-    </article>
+    </CardTag>
   )
 }
+

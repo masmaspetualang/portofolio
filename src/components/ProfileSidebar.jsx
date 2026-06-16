@@ -1,18 +1,36 @@
 import profileImg from '../assets/profile.jpeg'
 import styles from './ProfileSidebar.module.css'
 
+import certTekser from '../assets/certificate/Miftahul Huda asisten tekser-1.png'
+import certCsirt from '../assets/certificate/csirt-1.png'
+import certTLab from '../assets/certificate/deploy T-lab.png'
+
 const FRAMEWORKS = [
   'React', 'Laravel', 'PHP', 'FastAPI', 'Docker', 'Git',
 ]
 
 const CERTIFICATES = [
-  { title: 'React - The Complete Guide 2024', provider: 'Udemy', year: '2024' },
-  { title: 'Full-Stack Web Development',      provider: 'Dicoding', year: '2023' },
-  { title: 'Docker & Kubernetes',             provider: 'Udemy',    year: '2024' },
-  { title: 'Backend Dev with Laravel',        provider: 'Dicoding', year: '2023' },
+  {
+    title: 'Asisten Praktikum Teknologi Server',
+    provider: 'Lab Jaringan',
+    year: '2024',
+    imgSrc: certTekser,
+  },
+  {
+    title: 'Computer Security Incident Response Team (CSIRT)',
+    provider: 'CSIRT',
+    year: '2024',
+    imgSrc: certCsirt,
+  },
+  {
+    title: 'Deployment & Infrastructure',
+    provider: 'T-Lab',
+    year: '2024',
+    imgSrc: certTLab,
+  },
 ]
 
-export default function ProfileSidebar() {
+export default function ProfileSidebar({ onCertClick }) {
   return (
     <div className={styles.sidebar}>
 
@@ -70,7 +88,19 @@ export default function ProfileSidebar() {
           <p className={styles.sectionLabel}>Certificates</p>
           <div className={styles.certList}>
             {CERTIFICATES.map((c) => (
-              <div key={c.title} className={styles.certItem}>
+              <div
+                key={c.title}
+                className={styles.certItem}
+                onClick={() => onCertClick && onCertClick(c)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    onCertClick && onCertClick(c)
+                  }
+                }}
+              >
                 <div className={styles.certDot} />
                 <div className={styles.certInfo}>
                   <p className={styles.certTitle}>{c.title}</p>
@@ -91,3 +121,4 @@ export default function ProfileSidebar() {
     </div>
   )
 }
+

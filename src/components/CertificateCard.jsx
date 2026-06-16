@@ -1,8 +1,19 @@
 import styles from './CertificateCard.module.css'
 
-export default function CertificateCard({ title, provider, year, imgSrc }) {
+export default function CertificateCard({ title, provider, year, imgSrc, onClick }) {
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault()
+          onClick()
+        }
+      }}
+    >
       <div className={styles.thumb}>
         {imgSrc
           ? <img src={imgSrc} alt={title} className={styles.img} />
@@ -22,3 +33,4 @@ export default function CertificateCard({ title, provider, year, imgSrc }) {
     </div>
   )
 }
+

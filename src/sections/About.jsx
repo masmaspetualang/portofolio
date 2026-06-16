@@ -1,5 +1,4 @@
 import SkillCard from '../components/SkillCard'
-import CertificateCard from '../components/CertificateCard'
 import styles from './About.module.css'
 
 const SKILLS = [
@@ -22,24 +21,6 @@ const SKILLS = [
   {
     tech: 'Docker',
     items: ['Containerization', 'Deployment Workflow'],
-  },
-]
-
-const CERTIFICATES = [
-  {
-    title: 'React - The Complete Guide 2024',
-    provider: 'Udemy',
-    year: '2024',
-  },
-  {
-    title: 'Full-Stack Web Development',
-    provider: 'Dicoding Indonesia',
-    year: '2023',
-  },
-  {
-    title: 'Docker & Kubernetes: The Practical Guide',
-    provider: 'Udemy',
-    year: '2024',
   },
 ]
 
@@ -81,21 +62,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Certificates */}
-      <div className={styles.block}>
-        <h2 className={styles.blockTitle}>Certificates</h2>
-        <div className={styles.certList}>
-          {CERTIFICATES.map((c) => (
-            <CertificateCard
-              key={c.title}
-              title={c.title}
-              provider={c.provider}
-              year={c.year}
-              imgSrc={c.imgSrc}
-            />
-          ))}
-        </div>
-      </div>
     </section>
   )
 }

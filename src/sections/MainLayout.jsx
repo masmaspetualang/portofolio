@@ -4,16 +4,20 @@ import CategoryNavigation from '../components/CategoryNavigation'
 import About from './About'
 import Projects from './Projects'
 import Collection from './Collection'
+import Certificates from './Certificates'
+import CertificateModal from '../components/CertificateModal'
 import styles from './MainLayout.module.css'
 
 const SECTIONS = {
   about: About,
   projects: Projects,
   collection: Collection,
+  certificates: Certificates,
 }
 
 export default function MainLayout() {
   const [activeSection, setActiveSection] = useState('about')
+  const [selectedCert, setSelectedCert] = useState(null)
   const contentBodyRef = useRef(null)
   const layoutRef = useRef(null)
 
@@ -32,7 +36,7 @@ export default function MainLayout() {
     <div className={styles.layout} ref={layoutRef}>
       {/* Left: Fixed sidebar */}
       <aside className={styles.sidebar}>
-        <ProfileSidebar />
+        <ProfileSidebar onCertClick={setSelectedCert} />
       </aside>
 
       {/* Right: Content */}
@@ -42,9 +46,18 @@ export default function MainLayout() {
           onChange={setActiveSection}
         />
         <div className={styles.contentBody} ref={contentBodyRef} key={activeSection}>
-          <ActiveComponent />
+          <ActiveComponent onCertClick={setSelectedCert} />
         </div>
       </main>
+
+      {/* Lightbox Modal */}
+      {selectedCert && (
+        <CertificateModal
+          certificate={selectedCert}
+          onClose={() => setSelectedCert(null)}
+        />
+      )}
     </div>
   )
 }
+

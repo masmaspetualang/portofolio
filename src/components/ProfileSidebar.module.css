@@ -147,6 +147,19 @@
   display: flex;
   gap: var(--space-sm);
   align-items: flex-start;
+  cursor: pointer;
+  padding: 6px;
+  margin: -6px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.certItem:hover {
+  background-color: var(--color-accent-soft);
+}
+
+.certItem:hover .certTitle {
+  color: var(--color-accent);
 }
 
 .certDot {

@@ -4,6 +4,7 @@ const CATEGORIES = [
   { id: 'about',      label: 'About' },
   { id: 'projects',   label: 'My Project' },
   { id: 'collection', label: 'My Collection' },
+  { id: 'certificates', label: 'Certificates' },
 ]
 
 export default function CategoryNavigation({ active, onChange }) {
